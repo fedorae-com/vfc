@@ -17,7 +17,7 @@
                   label="Enter your email address"
                   name="email"
                   prepend-inner-icon="mdi-email"
-                  type="text"
+                  type="email"
                   class="rounded-0"
                   outlined
                   ></v-text-field>
