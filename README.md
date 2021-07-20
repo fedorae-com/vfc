@@ -1,4 +1,10 @@
-# vuetify-client
+# Vuetify Components
+
+**Component List**
+1. Login
+2. Register
+3. ForgotPassword
+4. ProfileContactCard
 
 ## Project setup
 ```
