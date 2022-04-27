@@ -1,6 +1,4 @@
 <template>
-  <v-app>
-    <v-main>
       <v-container>
         <v-row align="center" justify="center" dense>
           <v-col cols="12" sm="8" md="4" lg="4">
@@ -27,12 +25,11 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
 </template>
 
 <script>
 export default {
+  name: "app-forgot-password"
 }
 </script>
 

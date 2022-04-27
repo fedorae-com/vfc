@@ -1,6 +1,4 @@
 <template>
-  <v-app>
-    <v-main>
       <v-container align="center" justify="center" fill-height>
         <v-row class="bg-img" justify="space-around">
           <v-col cols="12" class="mt-8">
@@ -113,9 +111,13 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
 </template>
+
+<script>
+export default {
+  name: "app-profile-contact-card"
+}
+</script>
 
 <style>
 .bg-img {

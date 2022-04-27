@@ -1,6 +1,4 @@
 <template>
-  <v-app>
-    <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center" dense>
           <v-col cols="12" sm="8" md="4" lg="4">
@@ -28,13 +26,11 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
 </template>
 
 <script>
 export default {
-  name: 'Login'
+  name: 'app-login'
 }
 </script>
 
