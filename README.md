@@ -1,4 +1,4 @@
-# Fedorae Education - Vuetify Components
+# Vuetify Components
 
 **Component List**
 1. Login
