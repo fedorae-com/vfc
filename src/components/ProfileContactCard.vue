@@ -1,5 +1,10 @@
 <template>
       <v-container align="center" justify="center" fill-height>
+        <v-row align="center" justify="center">
+          <div class="text-center">
+            <h1 class="mb-2">Profile Contact Card</h1>
+          </div>
+        </v-row>
         <v-row class="bg-img" justify="space-around">
           <v-col cols="12" class="mt-8">
             <v-card width="400">

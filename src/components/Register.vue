@@ -3,6 +3,9 @@
         <v-row align="center" justify="center" dense>
           <v-col cols="12" sm="8" md="4" lg="4">
             <v-card elevation="0">
+              <div class="text-center">
+                <h1 class="mb-2">Register</h1>
+              </div>
               <a href="https://edu-fedorae.netlify.app" name="Fedorae Education" title="Fedorae Education" target="_blank">
                 <v-img src="@/assets/logo.png" alt="Fedorae Education Log" contain height="200"></v-img>
               </a>

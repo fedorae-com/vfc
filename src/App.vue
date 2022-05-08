@@ -55,10 +55,17 @@
             </template>
 
             <v-list class="grey lighten-3">
+              <!-- <v-list-item
+                v-for="item in more"
+                :key="item"
+                @click="addItem(item)"
+              >
+                {{ item }}
+              </v-list-item> -->
               <v-list-item
                 v-for="item in more"
                 :key="item"
-                @click="appComponent=item"
+                @click="appComponent = item"
               >
                 {{ item }}
               </v-list-item>
@@ -96,6 +103,7 @@ export default {
   data() {
     return {
       appComponent: Login,
+      currentItem: "tab-Login",
       items: [
         'Login', 'Register',
       ],
@@ -111,5 +119,16 @@ export default {
     ForgotPassword,
     ProfileContactCard,
   },
+
+  methods: {
+      addItem (item) {
+        const removed = this.items.splice(0, 1)
+        this.items.push(
+          ...this.more.splice(this.more.indexOf(item), 1),
+        )
+        this.more.push(...removed)
+        this.$nextTick(() => { this.currentItem = 'tab-' + item })
+      },
+    },
 }
 </script>
