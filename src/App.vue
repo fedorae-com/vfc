@@ -22,17 +22,18 @@
 
       <template v-slot:extension>
         <v-tabs
-          v-model="currentItem"
-          center-active
-          slider-color="white"
-        >
+	v-model="currentItem"
+	center-active
+	slider-color="white"
+       >
           <v-tab
             v-for="item in items"
             :key="item"
-            @click="appComponent = item"
-            :href="'#tab-' + item"
+		:href="'/?tab=' + item.title"
+            @click="appComponent = item.title"
           >
-            {{ item }}
+            {{ item.title }}
+            <!-- :href="'#tab-' + item.title" -->
           </v-tab>
 
           <v-menu
@@ -65,9 +66,9 @@
               <v-list-item
                 v-for="item in more"
                 :key="item"
-                @click="appComponent = item"
+                @click="appComponent = item.title"
               >
-                {{ item }}
+                {{ item.title }}
               </v-list-item>
             </v-list>
           </v-menu>
@@ -79,7 +80,7 @@
       <v-tab-item
         v-for="item in items.concat(more)"
         :key="item"
-        :value="'tab-' + item"
+        :value="'tab-' + item.title"
       >
         <v-card flat>
           <v-card-text>
@@ -105,7 +106,10 @@ export default {
       appComponent: Login,
       currentItem: "tab-Login",
       items: [
-        'Login', 'Register',
+	{ title: "Login", slug: "login" },
+	{ title: "Register", slug: "register" },
+	{ title: "ForgotPassword", slug: "forgot-password" },
+	{ title: "ProfileContactCard", slug: "profile-contactCard" },
       ],
       more: [
         'ForgotPassword', 'ProfileContactCard'
