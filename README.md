@@ -5,6 +5,7 @@
 2. Register
 3. ForgotPassword
 4. ProfileContactCard
+4. ImageUploadPreview
 
 ## Project setup
 ```
