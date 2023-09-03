@@ -9,7 +9,8 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --target lib --name @fedorae/vfc src/main.js",
         "lint": "vue-cli-service lint",
-        "play": "cd playground; yarn serve"
+        "play": "cd playground; yarn serve",
+        "release": "yarn lint && yarn build && standard-version"
     },
     "dependencies": {
         "core-js": "^3.22.0",
@@ -25,6 +26,7 @@
         "eslint-plugin-vue": "^8.6.0",
         "sass": "^1.50.0",
         "sass-loader": "^12.6.0",
+        "standard-version": "^9.5.0",
         "vue-cli-plugin-vuetify": "^2.4.8",
         "vue-template-compiler": "^2.6.11",
         "vuetify-loader": "^1.7.3"
