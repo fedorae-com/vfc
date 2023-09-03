@@ -1,6 +1,6 @@
 {
     "name": "@fedorae/vfc",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "private": false,
     "main": "./dist/@fedorae/vfc.common.js",
     "module": "./dist/@fedorae/vfc.umd.min.js",
