@@ -1,18 +1,16 @@
 {
     "name": "@fedorae/vfc",
-    "version": "0.1.1",
+    "version": "0.1.0",
     "private": false,
     "main": "./dist/@fedorae/vfc.common.js",
     "module": "./dist/@fedorae/vfc.umd.min.js",
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --target lib --name @fedorae/vfc src/main.js",
         "lint": "vue-cli-service lint",
         "play": "cd playground; yarn serve",
-        "release": "yarn lint && yarn build && standard-version"
+        "release": "yarn lint && yarn build && standard-version && yarn publish && git push --follow-tags"
     },
     "dependencies": {
         "core-js": "^3.22.0",
@@ -38,18 +36,11 @@
         "env": {
             "node": true
         },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
+        "extends": ["plugin:vue/essential", "eslint:recommended"],
         "parserOptions": {
             "parser": "babel-eslint"
         },
         "rules": {}
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ]
+    "browserslist": ["> 1%", "last 2 versions", "not dead"]
 }
