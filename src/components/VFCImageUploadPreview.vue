@@ -26,7 +26,7 @@ export default {
     name: 'VFCImageUploadPreview',
     data() {
         return {
-            image: '',
+            image: [],
             imagePreview: '',
         }
     },
