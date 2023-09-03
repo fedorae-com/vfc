@@ -1,10 +1,12 @@
 {
     "name": "@fedorae/vfc",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": false,
     "main": "./dist/@fedorae/vfc.common.js",
     "module": "./dist/@fedorae/vfc.umd.min.js",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --target lib --name @fedorae/vfc src/main.js",
@@ -36,11 +38,18 @@
         "env": {
             "node": true
         },
-        "extends": ["plugin:vue/essential", "eslint:recommended"],
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
         "parserOptions": {
             "parser": "babel-eslint"
         },
         "rules": {}
     },
-    "browserslist": ["> 1%", "last 2 versions", "not dead"]
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
 }
