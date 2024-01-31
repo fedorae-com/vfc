@@ -1,14 +1,27 @@
-import Vue from 'vue'
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
+
+// Components
 import App from './App.vue'
+
+// Composables
+import { createApp } from 'vue'
+
+// Plugins
+import { registerPlugins } from '@/plugins'
 import vuetify from './plugins/vuetify'
+
 import VFC from '@fedorae/vfc'
-import '@fedorae/vfc/dist/@fedorae/vfc.css'
+import '@fedorae/vfc/dist/style.css'
 
-Vue.config.productionTip = false
-Vue.prototype.$vuetify = { rtl: false }
-Vue.use(VFC)
+const app = createApp(App)
 
-new Vue({
-    vuetify,
-    render: (h) => h(App),
-}).$mount('#app')
+registerPlugins(app)
+
+app
+  .use(vuetify)
+  .use(VFC)
+  .mount('#app')

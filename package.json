@@ -1,55 +1,46 @@
 {
     "name": "@fedorae/vfc",
+    "type": "module",
     "version": "0.1.1",
     "private": false,
-    "main": "./dist/@fedorae/vfc.common.js",
-    "module": "./dist/@fedorae/vfc.umd.min.js",
+    "main": "./dist/vfc.umd.cjs",
+    "module": "./dist/vfc.js",
     "files": [
         "dist"
     ],
+    "exports": {
+        ".": {
+          "import": "./dist/vfc.js",
+          "require": "./dist/vfc.umd.cjs"
+        },
+        "./dist/style.css": {
+            "import": "./dist/style.css",
+            "require": "./dist/style.css"
+        }
+    },
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build --target lib --name @fedorae/vfc src/main.js",
-        "lint": "vue-cli-service lint",
-        "play": "cd playground; yarn serve",
-        "release": "yarn lint && yarn build && standard-version && yarn publish && git push --follow-tags"
+        "build": "vite build",
+        "preview": "vite preview",
+        "play": "cd playground; yarn dev",
+        "release": "yarn build && standard-version && yarn publish && git push --follow-tags"
     },
     "dependencies": {
-        "core-js": "^3.22.0",
-        "vue": "^2.6.14",
-        "vuetify": "^2.6.4"
+        "@mdi/font": "5.9.55",
+        "roboto-fontface": "*",
+        "vue": "^3.4.3",
+        "vuetify": "^3.4.9",
+        "webfontloader": "^1.0.0"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^5.0.4",
-        "@vue/cli-plugin-eslint": "^5.0.4",
-        "@vue/cli-service": "^5.0.4",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^7.31.0",
-        "eslint-plugin-vue": "^8.6.0",
-        "sass": "^1.50.0",
-        "sass-loader": "^12.6.0",
-        "standard-version": "^9.5.0",
-        "vue-cli-plugin-vuetify": "^2.4.8",
-        "vue-template-compiler": "^2.6.11",
-        "vuetify-loader": "^1.7.3"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {}
+        "@vue/compiler-sfc": "^3.1.0",
+        "@vitejs/plugin-vue": "^3.0.3",
+        "vite-plugin-vuetify": "^1.0.0-alpha.12",
+        "vite": "^3.1.8"
     },
     "browserslist": [
         "> 1%",
         "last 2 versions",
-        "not dead"
+        "not dead",
+        "no ie 11"
     ]
 }
