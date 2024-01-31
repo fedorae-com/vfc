@@ -1,55 +1,123 @@
-<template>
-    <v-card elevation="0">
-        <div class="text-center">
-            <h1 class="mb-2">Login</h1>
-        </div>
-        <a href="https://edu-fedorae.netlify.app" name="Fedorae Education" title="Fedorae Education" target="_blank">
-            <v-img src="@/assets/logo.png" alt="Fedorae Education Log" contain height="200"></v-img>
-        </a>
-        <v-card-text>
-            <v-form>
-                <v-text-field
-                    label="Enter your email"
-                    name="email"
-                    prepend-inner-icon="mdi-email"
-                    type="email"
-                    class="rounded-0"
-                    outlined
-                ></v-text-field>
-                <v-text-field
-                    label="Enter your password"
-                    name="password"
-                    prepend-inner-icon="mdi-lock"
-                    type="password"
-                    suffix="| Forgot?"
-                    class="rounded-0"
-                    outlined
-                ></v-text-field>
-                <v-btn class="rounded-0" color="#000000" x-large block dark>Login</v-btn>
-                <v-card-actions class="text--secondary">
-                    <v-checkbox color="#000000" label="Remember me"></v-checkbox>
-                    <v-spacer></v-spacer>
-                    <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
-                    No account?
-                    <a href="#" class="pl-2" style="color: #000000">Sign Up</a>
-                </v-card-actions>
-            </v-form>
-        </v-card-text>
-        <v-card-actions class="ml-6 mr-6 text-center">
-            <p>
-                By continuing, you agree to Fedorae Education's
-                <a href="#" class="pl-2" style="color: #000000">Policy</a>
-                and
-                <a href="#" class="pl-2" style="color: #000000">Terms of Use</a>
-            </p>
-        </v-card-actions>
-    </v-card>
-</template>
+<script setup>
+    import { ref } from 'vue'
 
-<script>
-export default {
-    name: 'VFCLogin',
-}
+    defineProps({
+        identifierPlaceholder: {
+            type: String,
+            default: 'email@example.com',
+        },
+        passwordPlaceholder: {
+            type: String,
+            default: 'Enter your password',
+        }
+    })
+
+    const emits = defineEmits(['submit-login'])
+
+     const visible =  ref(false)
+     const form = ref(null)
+
+     const identifier = ref('')
+     const password = ref('')
+
+     const submitLogin = async () => {
+
+        const { valid } = await form.value.validate()
+
+        if (valid) {
+            emits('submit-login', { identifier: identifier.value, password: password.value })
+        }
+     }
 </script>
 
-<style lang="css" scoped></style>
+<template>
+  <div>
+      <slot name="logo">
+    <v-img
+      class="mx-auto my-6"
+      max-width="228"
+      src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-v3-slim-text-light.svg"
+    ></v-img>
+      </slot>
+
+      <v-form @submit.prevent="submitLogin()" ref="form">
+    <v-card
+      class="mx-auto pa-12 pb-8"
+      elevation="8"
+      max-width="448"
+      rounded="lg"
+    >
+      <div class="text-subtitle-1 text-medium-emphasis">Account</div>
+
+      <v-text-field
+              v-model="identifier"
+        density="compact"
+        :placeholder="identifierPlaceholder"
+        :rules="[v => !!v || 'Item is required']"
+        prepend-inner-icon="mdi-email-outline"
+        variant="outlined"
+      ></v-text-field>
+
+      <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
+        Password
+
+        <a
+          class="text-caption text-decoration-none text-blue"
+          href="#"
+          rel="noopener noreferrer"
+          target="_blank"
+          style="pointer-events: none;"
+        >
+          Forgot login password?</a>
+      </div>
+
+      <v-text-field
+              v-model="password"
+        :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+        :type="visible ? 'text' : 'password'"
+        density="compact"
+        :placeholder="passwordPlaceholder"
+        :rules="[v => !!v || 'Item is required']"
+        prepend-inner-icon="mdi-lock-outline"
+        variant="outlined"
+        @click:append-inner="visible = !visible"
+      ></v-text-field>
+
+      <slot name="notice">
+      <v-card
+        class="mb-12"
+        color="surface-variant"
+        variant="tonal"
+      >
+        <v-card-text class="text-medium-emphasis text-caption">
+          Warning: After 3 consecutive failed login attempts, you account will be temporarily locked for three hours. If you must login now, you can also click "Forgot login password?" below to reset the login password.
+        </v-card-text>
+      </v-card>
+      </slot>
+
+      <v-btn
+        block
+        class="mb-8"
+        color="blue"
+        size="large"
+        variant="tonal"
+        type="submit"
+      >
+        Log In
+      </v-btn>
+
+      <v-card-text class="text-center">
+        <a
+          class="text-blue text-decoration-none"
+          href="#"
+          rel="noopener noreferrer"
+          target="_blank"
+          style="pointer-events: none;"
+        >
+          Sign up now <v-icon icon="mdi-chevron-right"></v-icon>
+        </a>
+      </v-card-text>
+    </v-card>
+      </v-form>
+  </div>
+</template>
